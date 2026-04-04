@@ -17,9 +17,13 @@ Esta carpeta guarda el contexto de implementacion para las historias comprometid
 - `docs/sprint-1/hu-1.1/demo-funcional.md`: flujo de demo para mostrar valor.
 - `docs/sprint-1/hu-1.1/trazabilidad.md`: mapeo AC -> endpoint -> componente.
 - `docs/sprint-1/hu-1.1/bitacora-implementacion.md`: registro tecnico detallado de cambios y verificacion.
+- `docs/sprint-1/README.md`: indice de cierre de sprint.
+- `docs/sprint-1/estado-actual.md`: estado real implementado en el repo.
+- `docs/sprint-1/pendientes-sprint-2.md`: backlog recomendado para el siguiente sprint.
 
 ## Estado actual
 
-- Arquitectura base del sistema: definida.
-- Implementacion HU 1.1: planificada, en ejecucion.
+- Arquitectura base del sistema: implementada.
+- Implementacion HU 1.1: finalizada.
+- Sprint 1: cerrado.
 
