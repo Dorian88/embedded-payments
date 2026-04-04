@@ -2,6 +2,14 @@
 
 Backend API for an embedded payments platform built with Spring Boot using a modular monolith architecture.
 
+## 🚀 Demo en nube
+
+El servicio está desplegado en Render:
+
+- **URL**: https://embedded-payments-1.onrender.com
+- **Swagger**: https://embedded-payments-1.onrender.com/swagger-ui/index.html
+- **API Docs**: https://embedded-payments-1.onrender.com/v3/api-docs
+
 ## Architecture
 
 Root package: `com.paymentplatform.embeddedpayments`
@@ -71,7 +79,7 @@ docker run --rm -p 8085:8085 \
 
 ## Deploy en Render
 
-Este proyecto ya queda preparado para Render con:
+El proyecto está desplegado y funcional en Render. Para redesplegarlo o crear un nuevo servicio:
 
 - `server.port=${PORT:8085}` para respetar el puerto inyectado por la plataforma.
 - `Dockerfile` multi-stage para build reproducible.
@@ -90,6 +98,22 @@ Notas:
 - La base de datos puede ser Render Postgres o Neon.
 - Antes de la demo, hay que ejecutar `db/001_create_schema.sql` en la base seleccionada.
 - El endpoint de salud y Swagger pueden usarse para validar el deploy.
+
+## Testing el flujo en nube
+
+Con la colección de Postman (`postman/embedded-payments-sprint1.postman_collection.json`):
+
+1. Actualiza el `baseUrl` del environment a:
+   ```json
+   "baseUrl": "https://embedded-payments-1.onrender.com"
+   ```
+
+2. Ejecuta el flujo completo:
+   - Registro de comercio
+   - Generación de token
+   - Payment intent
+   - Transacción
+   - Refund
 
 ## Tests
 
