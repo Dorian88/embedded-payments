@@ -50,13 +50,32 @@ Requirements:
 ./mvnw spring-boot:run
 ```
 
+### Run with Docker
+
+Build the image:
+
+```bash
+docker build -t embedded-payments .
+```
+
+Run the container:
+
+```bash
+docker run --rm -p 8085:8085 \
+  -e SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/embeddedpayments \
+  -e SPRING_DATASOURCE_USERNAME=postgres \
+  -e SPRING_DATASOURCE_PASSWORD=postgres \
+  -e JWT_SECRET=change-this-secret-key-change-this-secret-key \
+  embedded-payments
+```
+
 ## Deploy en Render
 
 Este proyecto ya queda preparado para Render con:
 
 - `server.port=${PORT:8085}` para respetar el puerto inyectado por la plataforma.
-- `render.yaml` con build y start command.
-- El build de Render recalcula `JAVA_HOME` desde `javac` para evitar el error del Maven Wrapper.
+- `Dockerfile` multi-stage para build reproducible.
+- `render.yaml` usando `env: docker`.
 
 Variables de entorno requeridas en Render:
 
@@ -65,13 +84,6 @@ Variables de entorno requeridas en Render:
 - `SPRING_DATASOURCE_PASSWORD`
 - `JWT_SECRET`
 - `SPRING_JPA_HIBERNATE_DDL_AUTO=none`
-
-Comandos usados por Render:
-
-```bash
-./mvnw clean package -DskipTests
-java -jar target/embedded-payments-0.0.1-SNAPSHOT.jar
-```
 
 Notas:
 
