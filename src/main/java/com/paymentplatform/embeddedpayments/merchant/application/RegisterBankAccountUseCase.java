@@ -50,10 +50,10 @@ public class RegisterBankAccountUseCase {
             );
         }
 
-        // Encriptar datos bancarios (AES-256-GCM)
+        // Encriptar datos bancarios (AES-256-GCM) - una sola vez
         String accountData = String.format("%s|%s|%s", iban, routingNumber, accountHolderName);
-        String encryptedData = encryptionService.encrypt(accountData);
         byte[] encryptedDataBytes = encryptionService.encryptToBytes(accountData);
+        String encryptedData = java.util.Base64.getEncoder().encodeToString(encryptedDataBytes);
         
         // Generar hash de IBAN para búsquedas sin desencriptar
         String ibanHash = hashValue(iban);
