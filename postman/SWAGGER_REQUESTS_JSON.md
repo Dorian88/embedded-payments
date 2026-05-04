@@ -13,7 +13,7 @@
 {
   "email": "admin@embedded-payments.com",
   "password": "admin@123",
-  "role": "ROLE_ADMIN"
+  "role": "ADMIN"
 }
 ```
 **Guardar del Response**: `token` y `merchant_id`
@@ -26,7 +26,7 @@
 {
   "email": "merchant@example.com",
   "password": "merchant@123",
-  "role": "ROLE_MERCHANT"
+  "role": "USER"
 }
 ```
 **Guardar del Response**: `token` y `merchant_id`

@@ -76,8 +76,8 @@ const errors = ref({
 
 onMounted(() => {
   if (merchantStore.current) {
-    form.contactName = merchantStore.current.contactName || ''
-    form.contactEmail = merchantStore.current.contactEmail || ''
+    form.contactName = merchantStore.current.contact_name || ''
+    form.contactEmail = merchantStore.current.contact_email || ''
   }
 })
 

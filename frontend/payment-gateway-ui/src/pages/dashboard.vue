@@ -128,15 +128,15 @@
                 Contact Information
               </h3>
               <div class="space-y-2">
-                <div v-if="merchantStore.current.contactName" class="text-sm">
+                <div v-if="merchantStore.current.contact_name" class="text-sm">
                   <span class="text-slate-600">Name:</span>
-                  <span class="font-medium text-slate-900 ml-2">{{ merchantStore.current.contactName }}</span>
+                  <span class="font-medium text-slate-900 ml-2">{{ merchantStore.current.contact_name }}</span>
                 </div>
-                <div v-if="merchantStore.current.contactEmail" class="text-sm">
+                <div v-if="merchantStore.current.contact_email" class="text-sm">
                   <span class="text-slate-600">Email:</span>
-                  <span class="font-medium text-slate-900 ml-2">{{ merchantStore.current.contactEmail }}</span>
+                  <span class="font-medium text-slate-900 ml-2">{{ merchantStore.current.contact_email }}</span>
                 </div>
-                <div v-if="!merchantStore.current.contactName && !merchantStore.current.contactEmail" class="text-sm text-slate-500 italic">
+                <div v-if="!merchantStore.current.contact_name && !merchantStore.current.contact_email" class="text-sm text-slate-500 italic">
                   No contact information configured
                 </div>
               </div>

@@ -38,12 +38,14 @@ export interface Merchant {
   id: string;
   name: string;
   email: string;
-  contactName?: string;
-  contactEmail?: string;
+  contact_name?: string;
+  contact_email?: string;
   status: 'ACTIVE' | 'INACTIVE' | 'SUSPENDED' | 'DISABLED';
-  bankAccountData?: string;
-  updatedAt: Date;
-  createdAt: Date;
+  bank_account_data?: string;
+  updated_at?: Date;
+  created_at?: Date;
+  updatedAt?: Date;
+  createdAt?: Date;
 }
 
 export interface UpdateContactRequest {

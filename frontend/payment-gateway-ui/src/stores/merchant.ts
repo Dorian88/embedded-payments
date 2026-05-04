@@ -10,7 +10,7 @@ export const useMerchantStore = defineStore('merchant', () => {
 
   const hasActiveStatus = computed(() => current.value?.status === 'ACTIVE')
   const hasBankAccount = computed(
-    () => !!current.value?.bankAccountData && current.value.bankAccountData !== '[RESTRICTED]'
+    () => !!current.value?.bank_account_data && current.value.bank_account_data !== '[RESTRICTED]'
   )
 
   async function fetchById(id: string) {

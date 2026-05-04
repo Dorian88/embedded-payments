@@ -39,15 +39,15 @@
       <div class="border-t pt-6">
         <h3 class="text-lg font-semibold text-gray-900 mb-4">Contact Information</h3>
         <div class="space-y-2">
-          <p v-if="merchantStore.current.contactName">
+          <p v-if="merchantStore.current.contact_name">
             <span class="text-sm font-medium text-gray-700">Name:</span>
-            <span class="text-gray-900">{{ merchantStore.current.contactName }}</span>
+            <span class="text-gray-900">{{ merchantStore.current.contact_name }}</span>
           </p>
-          <p v-if="merchantStore.current.contactEmail">
+          <p v-if="merchantStore.current.contact_email">
             <span class="text-sm font-medium text-gray-700">Email:</span>
-            <span class="text-gray-900">{{ merchantStore.current.contactEmail }}</span>
+            <span class="text-gray-900">{{ merchantStore.current.contact_email }}</span>
           </p>
-          <p v-if="!merchantStore.current.contactName && !merchantStore.current.contactEmail" class="text-gray-600">
+          <p v-if="!merchantStore.current.contact_name && !merchantStore.current.contact_email" class="text-gray-600">
             No contact information configured
           </p>
         </div>
@@ -66,8 +66,8 @@
 
       <!-- Dates -->
       <div class="border-t pt-6 text-sm text-gray-600">
-        <p>Created: {{ new Date(merchantStore.current.createdAt).toLocaleDateString() }}</p>
-        <p>Last Updated: {{ new Date(merchantStore.current.updatedAt).toLocaleDateString() }}</p>
+        <p>Created: {{ new Date(merchantStore.current.created_at || merchantStore.current.createdAt!).toLocaleDateString() }}</p>
+        <p>Last Updated: {{ new Date(merchantStore.current.updated_at || merchantStore.current.updatedAt!).toLocaleDateString() }}</p>
       </div>
     </div>
   </div>
