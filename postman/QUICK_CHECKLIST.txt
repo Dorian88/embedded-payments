@@ -1,0 +1,234 @@
+# 📹 QUICK CHECKLIST - VIDEO DEMO EN 5 MIN
+
+## ✅ ANTES DE EMPEZAR
+
+```
+├─ [ ] Backend corriendo: ./mvnw spring-boot:run
+├─ [ ] Swagger abierto: http://localhost:8085/swagger-ui.html
+├─ [ ] GUION_VIDEO_5MIN.md visible (pantalla 2 o impreso)
+├─ [ ] Micrófono probado (sin ruido de fondo)
+├─ [ ] Software grabación activo (OBS/ScreenFlow)
+├─ [ ] Notepad para guardar tokens
+└─ [ ] Navegador limpio (sin tabs extras)
+```
+
+---
+
+## 🎬 DURANTE LA GRABACIÓN
+
+### 0:00 - INTRO (10 seg)
+```
+[ ] Lee intro: "Buenos días, soy [Nombre]..."
+[ ] Muestra Swagger UI en pantalla
+```
+
+### 0:10 - AUTH ADMIN (30 seg)
+```
+REQUEST 1:
+POST /api/v1/auth/login
+
+{
+  "email": "admin@embedded-payments.com",
+  "password": "admin@123",
+  "role": "ROLE_ADMIN"
+}
+
+[ ] Ejecutar
+[ ] Esperar respuesta 200 OK
+[ ] Copiar TOKEN → guardar en notepad
+```
+
+### 0:40 - AUTH MERCHANT (30 seg)
+```
+REQUEST 2:
+POST /api/v1/auth/login
+
+{
+  "email": "merchant@example.com",
+  "password": "merchant@123",
+  "role": "ROLE_MERCHANT"
+}
+
+[ ] Ejecutar
+[ ] Esperar respuesta 200 OK
+[ ] Copiar TOKEN → guardar en notepad
+[ ] Copiar MERCHANT_ID → guardar en notepad
+```
+
+### 1:10 - HU 1.2 (45 seg)
+```
+Narración: "HU 1.2: Actualizar contacto..."
+
+REQUEST 3:
+PUT /api/v1/merchants/{merchant_id}/contact
+
+Header: Authorization: Bearer {MERCHANT_TOKEN}
+
+{
+  "contact_name": "Juan Esteban Mosquera",
+  "contact_email": "juan.mosquera@embedded-payments.com"
+}
+
+[ ] Ejecutar
+[ ] Mostrar respuesta 200 OK
+[ ] Mostrar message: "Contact information updated successfully"
+```
+
+### 1:55 - HU 1.3 (45 seg)
+```
+Narración: "HU 1.3: Registrar banco encriptado..."
+
+REQUEST 4:
+PUT /api/v1/merchants/{merchant_id}/bank-account
+
+Header: Authorization: Bearer {MERCHANT_TOKEN}
+
+{
+  "iban": "ES9121000418450200051332",
+  "routing_number": "021000021",
+  "account_holder_name": "Empresa Payments S.L."
+}
+
+[ ] Ejecutar
+[ ] Mostrar respuesta 200 OK
+[ ] Narrar: "Encriptado con AES-256-GCM"
+```
+
+### 2:40 - HU 1.4 (45 seg)
+```
+Narración: "HU 1.4: Activar comercio (admin only)..."
+
+REQUEST 5:
+PATCH /api/v1/merchants/{merchant_id}/activate
+
+Header: Authorization: Bearer {ADMIN_TOKEN} ← ¡ADMIN!
+
+{
+  "reason": "Documentos verificados y aprobados"
+}
+
+[ ] Ejecutar
+[ ] Mostrar respuesta 200 OK
+[ ] Mostrar status: "ACTIVE"
+[ ] Narrar: "Solo admin puede hacer esto"
+```
+
+### 3:25 - HU 1.5 (45 seg)
+```
+Narración: "HU 1.5: Desactivar comercio..."
+
+REQUEST 6:
+PATCH /api/v1/merchants/{merchant_id}/deactivate
+
+Header: Authorization: Bearer {ADMIN_TOKEN}
+
+{
+  "reason": "Demostración en video"
+}
+
+[ ] Ejecutar
+[ ] Mostrar respuesta 200 OK
+[ ] Mostrar status: "INACTIVE"
+[ ] Narrar: "Bloquea nuevas transacciones"
+```
+
+### 4:10 - HU 1.6 COMO MERCHANT (40 seg)
+```
+Narración: "HU 1.6: Consultar detalles como propietario..."
+
+REQUEST 7:
+GET /api/v1/merchants/{merchant_id}
+
+Header: Authorization: Bearer {MERCHANT_TOKEN}
+
+[ ] Ejecutar
+[ ] Mostrar respuesta 200 OK
+[ ] SEÑALAR: contact_email → visible (porque soy dueño)
+[ ] SEÑALAR: bank_account_data → "[ENCRYPTED - Access granted]"
+```
+
+### 4:40 - HU 1.6 COMO ADMIN (30 seg) [OPCIONAL]
+```
+Narración: "Misma consulta como administrador..."
+
+REQUEST 8:
+GET /api/v1/merchants/{merchant_id}
+
+Header: Authorization: Bearer {ADMIN_TOKEN}
+
+[ ] Ejecutar
+[ ] Mostrar respuesta 200 OK
+[ ] SEÑALAR: Mismo response pero con acceso total
+```
+
+### 5:10 - CIERRE (10 seg)
+```
+Narración: "Sprint 1 completado. 5 HUs, Autenticación JWT,
+Encriptación AES-256-GCM, Control de acceso basado en roles,
+Enmascaramiento OWASP. Gracias."
+
+[ ] Mostrar resumen en pantalla (opcional)
+[ ] Gracias
+```
+
+---
+
+## 📊 TABLA DE REEMPLAZO
+
+| Variable | Valor (guardar aquí) |
+|---|---|
+| {ADMIN_TOKEN} | `Bearer ...` |
+| {MERCHANT_TOKEN} | `Bearer ...` |
+| {merchant_id} | (uuid) |
+
+---
+
+## ✔️ DESPUÉS DE GRABAR
+
+```
+[ ] Exportar como MP4, 1080p, 30fps
+[ ] Escuchar audio: ¿se oye claro?
+[ ] Ver video: ¿están visibles todos los endpoints?
+[ ] Verificar: ¿todos los status 200 OK?
+[ ] Subir a repo o compartir enlace
+[ ] Marcar como deliverable Sprint 1
+```
+
+---
+
+## ⚠️ RIESGOS COMUNES
+
+| Problema | Solución |
+|---|---|
+| Se me olvida un request | Lee GUION_VIDEO_5MIN.md antes de grabar |
+| Video se corta en mitad | Tiempo mínimo 5:20, no apures |
+| Audio muy bajo | Sube volumen sistema antes de grabar |
+| Backend cae | Reinicia: `./mvnw spring-boot:run` |
+| Token inválido | Regenera con REQUEST 1 o 2 |
+
+---
+
+## 🎯 MÉTRICAS FINALES
+
+```
+✅ HU 1.2  →  Actualizar contacto
+✅ HU 1.3  →  Registrar banco
+✅ HU 1.4  →  Activar comercio
+✅ HU 1.5  →  Desactivar comercio
+✅ HU 1.6  →  Consultar detalles
+
+🔐 Seguridad:
+   JWT Auth ✅
+   AES-256-GCM ✅
+   RBAC ✅
+   Data Masking ✅
+   Auditoría ✅
+
+⏱️ Duración: 5:20 máximo
+📹 Formato: Swagger UI directo
+🎤 Narración: En español, clara
+```
+
+---
+
+**LISTO PARA GRABAR** ✨
