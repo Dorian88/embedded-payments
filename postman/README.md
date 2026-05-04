@@ -1,87 +1,95 @@
 # 📮 Colecciones Postman - Embedded Payments
 
-## Archivos en este Directorio
+## ⭐ ARCHIVOS NUEVOS - DEMO COLLECTION (Sprint 1 - HU 1.2-1.6)
 
-### 1. **embedded-payments-hu1.2-1.6.postman_collection.json** ⭐ NUEVO
-Colección completa para testing de HU 1.2-1.6 (Gestión Avanzada de Comercios)
+### 1. **embedded-payments-demo.postman_collection.json** ⭐ RECOMENDADO PARA DEMO
+Colección simplificada y optimizada para grabar video de demostración
 
 **Contenidos**:
-- ✅ Setup: Registrar comercio (HU 1.1)
+- ✅ 2 Setup: Auth admin + auth merchant (generan JWT tokens)
 - ✅ HU 1.2: Actualizar información de contacto
-- ✅ HU 1.4: Activación de comercio (ADMIN)
 - ✅ HU 1.3: Registrar datos bancarios (cifrados)
+- ✅ HU 1.4: Activar comercio (Admin only)
+- ✅ HU 1.5: Desactivar comercio (Admin only)
 - ✅ HU 1.6: Consultar detalles con enmascaramiento
-- ✅ HU 1.5: Desactivación de comercio
-- ✅ Validaciones: Email, IBAN, Routing, Autorización
-- ✅ Auditoría: Queries SQL para verificar
+- ✅ 3 Error scenarios (validación, autenticación, autorización)
+- ✅ 15 Tests con validaciones automáticas
 
-**15+ Tests con validaciones**:
-- HTTP status codes
-- Campos en response
-- Enmascaramiento correcto
-- Encriptación activa
-- Auditoría registrada
+**Optimizado para**:
+- Demostración en video
+- Cobertura 100% de HU 1.2-1.6
+- Ejecución rápida (5-7 minutos)
+- Todos los features de seguridad demostrados
 
-### 2. **embedded-payments-hu1.2-1.6-environment.json** ⭐ NUEVO
-Variables de entorno para HU 1.2-1.6
+### 2. **embedded-payments-demo.postman_environment.json** ⭐
+Variables de entorno para ambiente **LOCAL (desarrollo)**
 
-**Variables incluidas**:
+**Variables pre-configuradas**:
 ```
-baseUrl              http://localhost:8080
-merchantId           (se llena automáticamente)
-merchantEmail        tienda.tech@example.com
-merchantName         Tienda Tech S.L.
-adminToken           (generar en login)
-merchantToken        (generar en login)
-contactName          Juan Mosquera García
-contactEmail         juan.mosquera@tiendatech.es
-iban                 ES9121000418450200051332
-routingNumber        021000021
-accountHolder        Tienda Tech S.L.
+baseURL                    http://localhost:8085
+admin_email                admin@embedded-payments.com
+admin_password             admin@123
+merchant_email             merchant@example.com
+merchant_password          merchant@123
+contact_name               Juan Esteban Mosquera
+contact_email              juan.mosquera@embedded-payments.com
+iban                       ES9121000418450200051332
+routing_number             021000021
+account_holder_name        Empresa Payments S.L.
+activation_reason          Documentos verificados y aprobados...
+deactivation_reason        Incumplimiento de términos de servicio
 ```
 
-### 3. **GUIA_POSTMAN_HU1.2-1.6.md** ⭐ NUEVO
-Guía paso a paso para usar la colección
+### 3. **embedded-payments-demo-production.postman_environment.json** ⭐
+Variables de entorno para ambiente **PRODUCCIÓN (Render)**
+
+**Diferencia principal**:
+```
+baseURL = https://embedded-payments-1.onrender.com
+```
+
+### 4. **DEMO_GUIDE.md** ⭐
+Guía completa para grabar video de demostración
 
 **Secciones**:
-- Cómo importar colección y environment
-- Configuración inicial (obtener tokens JWT)
-- Flujo de testing recomendado (6 pasos)
-- Testing por caso (happy path, validaciones, errores)
-- Validar auditoría en BD (queries SQL)
+- Setup e instalación en Postman
+- Flujo de demostración paso a paso (7-10 minutos)
+- Explicación de cada HU y sus features de seguridad
+- Tips para grabar video profesional
 - Troubleshooting
+- Datos de prueba y referencias
 
 ---
 
-## 📥 Quick Start
+## 📥 Quick Start - DEMO (Nuevo)
 
 ### 1. Importar Colección
 ```
-Postman → Import → embedded-payments-hu1.2-1.6.postman_collection.json
+Postman → File → Import → embedded-payments-demo.postman_collection.json
 ```
 
-### 2. Importar Environment
+### 2. Importar Environment (Local)
 ```
-Postman → Manage Environments → Import → embedded-payments-hu1.2-1.6-environment.json
+Postman → Environments → Import → embedded-payments-demo.postman_environment.json
 ```
 
 ### 3. Seleccionar Environment
 ```
-Dropdown superior derecho → Embedded Payments - HU 1.2-1.6 Environment
+Dropdown derecho (Environment selector) → Embedded Payments Demo Environment
 ```
 
-### 4. Obtener Tokens JWT
-Ver **GUIA_POSTMAN_HU1.2-1.6.md** sección "Configuración Inicial"
+### 4. Ejecutar Demo en Orden
+```
+1. Setup & Authentication → Generate Admin JWT Token
+2. Setup & Authentication → Generate Merchant JWT Token
+3. HU 1.2 - Update Merchant Contact
+4. HU 1.3 - Register Bank Account
+5. HU 1.4 - Activate Merchant
+6. HU 1.5 - Deactivate Merchant
+7. HU 1.6 - Get Merchant Details
+```
 
-### 5. Ejecutar Tests
-```
-Folder "0. SETUP" → Registrar comercio
-Folder "HU 1.2" → Actualizar contacto
-Folder "HU 1.4" → Activar comercio
-Folder "HU 1.3" → Registrar datos bancarios
-Folder "HU 1.6" → Consultar detalles
-Folder "HU 1.5" → Desactivar comercio
-```
+Ver **DEMO_GUIDE.md** para detalles completos incluyendo video recording tips.
 
 ---
 

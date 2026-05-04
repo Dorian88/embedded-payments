@@ -15,21 +15,51 @@ This guide explains how to use the **embedded-payments-demo.postman_collection.j
 4. Choose `embedded-payments-demo.postman_collection.json`
 5. Click **Import**
 
-### 2. Create/Configure Environment
+### 2. Import Environment Configuration
 
-The collection uses environment variables. Postman will auto-create them, but configure these:
+The collection includes pre-configured environment files. Choose one:
 
-**Variables to set:**
-- `baseURL`: `http://localhost:8085` (local) or `https://embedded-payments-1.onrender.com` (production)
-- `jwt_token`: Auto-populated after running "Generate Admin JWT Token"
-- `merchant_jwt_token`: Auto-populated after running "Generate Merchant JWT Token"
-- `merchant_id`: Auto-populated from login response
-
-**To set manually:**
+**Option A: Import Local Development Environment (Recommended for demo)**
 1. Click **Environments** (top-left sidebar)
-2. Create new or edit existing environment
-3. Set `baseURL` to your backend address
-4. Save
+2. Click **Import**
+3. Select `embedded-payments-demo.postman_environment.json`
+   - `baseURL`: `http://localhost:8085`
+   - All credentials and test data pre-filled
+4. Click **Import**
+
+**Option B: Import Production Environment**
+1. Click **Environments** (top-left sidebar)
+2. Click **Import**
+3. Select `embedded-payments-demo-production.postman_environment.json`
+   - `baseURL`: `https://embedded-payments-1.onrender.com`
+   - Same credentials and test data
+4. Click **Import**
+
+### Variables Included in Environment
+
+| Variable | Value | Purpose |
+|---|---|---|
+| `baseURL` | http://localhost:8085 | Backend API base URL |
+| `jwt_token` | (auto-populated) | Admin JWT token |
+| `merchant_jwt_token` | (auto-populated) | Merchant JWT token |
+| `merchant_id` | (auto-populated) | Merchant ID from login |
+| `merchant_id_owner` | (auto-populated) | Owner merchant ID |
+| `admin_email` | admin@embedded-payments.com | Admin credentials |
+| `admin_password` | admin@123 | Admin credentials |
+| `merchant_email` | merchant@example.com | Merchant credentials |
+| `merchant_password` | merchant@123 | Merchant credentials |
+| `contact_name` | Juan Esteban Mosquera | Test contact name |
+| `contact_email` | juan.mosquera@... | Test contact email |
+| `iban` | ES9121000418450200051332 | Valid Spanish IBAN |
+| `routing_number` | 021000021 | Valid USA routing number |
+| `account_holder_name` | Empresa Payments S.L. | Bank account holder |
+| `activation_reason` | Documentos verificados... | Activation reason |
+| `deactivation_reason` | Incumplimiento de términos... | Deactivation reason |
+
+**Tokens are auto-populated by requests:**
+- `jwt_token`: Set after "Generate Admin JWT Token" request
+- `merchant_jwt_token`: Set after "Generate Merchant JWT Token" request
+- `merchant_id` & `merchant_id_owner`: Set from login responses
 
 ---
 
