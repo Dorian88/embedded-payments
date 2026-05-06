@@ -105,7 +105,7 @@ jobs:
           --header 'content-type: application/json'
     
     - name: Wait for deployment
-      run: sleep 30
+      run: sleep 150
     
     - name: Verify deployment
       run: |
